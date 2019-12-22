@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="mainActivityClickHandler"
+            type="com.example.githubfinder.activities.MainPageActivity.MainActivityClickHandlers" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activities.MainPageActivity">
+
+        <!--    toolbar-->
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/toolbarColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="start|center_vertical"
+                    android:src="@drawable/ic_github_logo" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/toolbar_title"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="15dp"/>
+
+            </LinearLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <!--    list of initial users-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/initialUsers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:paddingBottom="70dp"
+            android:clipToPadding="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+        <!--        fab button-->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="20dp"
+            android:backgroundTint="@color/black"
+            android:onClick="@{mainActivityClickHandler::onFabButtonClick}"
+            android:src="@drawable/ic_search_white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    <!--    searchview-->
+<!--        <androidx.cardview.widget.CardView-->
+<!--            android:id="@+id/searchLayout"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="15dp"-->
+<!--            android:layout_marginTop="25dp"-->
+<!--            android:layout_marginEnd="15dp"-->
+<!--            android:elevation="25dp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/toolbar">-->
+
+<!--            <androidx.appcompat.widget.SearchView-->
+<!--                android:id="@+id/searchUser"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                app:queryHint="@string/search_view_hint"-->
+<!--                android:focusable="false"-->
+<!--                app:iconifiedByDefault="false"/>-->
+
+<!--        </androidx.cardview.widget.CardView>-->
+
+    <!--    users_list-->
+<!--        <include-->
+<!--            android:id="@+id/layout_content_main"-->
+<!--            layout="@layout/users_list"-->
+<!--            bind:initialClickHandler="@{clickHandler}"-->s
+<!--            bind:searchedUserClickHandler="@{clickHandler}"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/searchLayout"/>-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

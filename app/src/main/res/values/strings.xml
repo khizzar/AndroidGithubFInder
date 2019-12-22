@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">GithubFinder</string>
+    <string name="toolbar_title">Github Finder</string>
+    <string name="search_view_hint">Enter a Username</string>
+    <string name="search_user_title_msg"><![CDATA[Enter a <b><font color=#000000>Username</font></b> to fetch a <b><font color=#000000>User Profile and Repos</font></b>]]></string>
+    <string name="btn_view_profile_txt">View Profile</string>
+    <string name="public_repos_txt">Public Repos:</string>
+    <string name="public_gists_txt">Public Gists:</string>
+    <string name="followers_txt">Followers:</string>
+    <string name="company_txt">Company:</string>
+    <string name="dummy_company_name">Tech Incubator</string>
+    <string name="dummy_website_blog">khizzar@github.io</string>
+    <string name="website_blog_txt">Website/Blog:</string>
+    <string name="dummy_location">Pakistan</string>
+    <string name="location_txt">Location:</string>
+    <string name="dummy_member_since">2019-01-24T17:03:58Z</string>
+    <string name="member_since_txt">Member Since:</string>
+    <string name="following_txt">Following:</string>
+    <string name="username_txt">Username:</string>
+    <string name="dummy_username">Khizzar</string>
+</resources>
