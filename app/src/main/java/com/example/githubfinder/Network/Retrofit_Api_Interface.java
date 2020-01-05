@@ -20,10 +20,14 @@ public interface Retrofit_Api_Interface {
     @GET("users")
     Call<InitialUsersModel> getInitialUsers();
 
+//    Things that come after the ? are usually queries.
     @GET("users")
-    Call<List<InitialUsersModel>> getInitialUsersList(@Header("Authorization") String token);
+    Call<List<InitialUsersModel>> getInitialUsersList(@Query("client_id") String client_id,
+                                                      @Query("client_secret") String client_secret);
 
     @GET("users/{username}")
-    Call<UsersModel> getSingleUserData(@Path("username") String username);
+    Call<UsersModel> getSingleUserData(@Path("username") String username,
+                                       @Query("client_id") String client_id,
+                                       @Query("client_secret") String client_secret);
 
 }

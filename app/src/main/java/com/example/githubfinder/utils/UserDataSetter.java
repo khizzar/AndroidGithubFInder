@@ -10,11 +10,17 @@ import com.example.githubfinder.databinding.UsersInfoCardBinding;
 import com.example.githubfinder.models.InitialUsersModel;
 import com.example.githubfinder.models.UsersModel;
 
+import javax.inject.Inject;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class UserDataSetter {
+
+    @Inject
+    Keys keys = new Keys();
+
     private UsersInfoCardBinding usersInfoCardBinding;
     private InitialUsersModel initialUsersModel;
     private UsersAdapter.UsersListViewHolder holder;
@@ -35,7 +41,7 @@ public class UserDataSetter {
 
     private void getUserDataRetrofit(String userLogin){
         try {
-            Call<UsersModel> call = Retrofit_Api_Client.createService(Retrofit_Api_Interface.class).getSingleUserData(userLogin);
+            Call<UsersModel> call = Retrofit_Api_Client.createService(Retrofit_Api_Interface.class).getSingleUserData(userLogin,keys.clientId,keys.clientSecret);
             call.enqueue(new Callback<UsersModel>() {
                 @Override
                 public void onResponse(Call<UsersModel> call, Response<UsersModel> response) {

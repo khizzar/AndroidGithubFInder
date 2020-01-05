@@ -6,9 +6,12 @@ import android.util.Log;
 import com.example.githubfinder.models.InitialUsersModel;
 import com.example.githubfinder.Network.Retrofit_Api_Client;
 import com.example.githubfinder.Network.Retrofit_Api_Interface;
+import com.example.githubfinder.utils.Keys;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.inject.Inject;
 
 import androidx.lifecycle.MutableLiveData;
 
@@ -17,6 +20,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class UsersRepository {
+
+    @Inject
+    Keys keys = new Keys();
+
     Application application;
     private ArrayList<InitialUsersModel> initialUsersModelList = new ArrayList<>();
     private MutableLiveData<List<InitialUsersModel>> listMutableLiveData = new MutableLiveData<>();
@@ -51,7 +58,7 @@ public class UsersRepository {
 
     public MutableLiveData<List<InitialUsersModel>> getInitialUsersList(){
         try {
-            Call<List<InitialUsersModel>> call = Retrofit_Api_Client.createService(Retrofit_Api_Interface.class).getInitialUsersList("Authorization token d4db82781a373162db4636fa963a1b41a1bd3888");
+            Call<List<InitialUsersModel>> call = Retrofit_Api_Client.createService(Retrofit_Api_Interface.class).getInitialUsersList(keys.clientId,keys.clientSecret);
             call.enqueue(new Callback<List<InitialUsersModel>>() {
                 @Override
                 public void onResponse(Call<List<InitialUsersModel>> call, Response<List<InitialUsersModel>> response) {

@@ -12,422 +12,418 @@
 
     </data>
 
-    <LinearLayout
-        android:orientation="vertical"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true">
+        android:layout_height="wrap_content">
 
-        <com.google.android.material.card.MaterialCardView
+<!--        user info-->
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardPreventCornerOverlap="false"
-            app:cardUseCompatPadding="true"
-            android:clipToPadding="false"
-            app:cardCornerRadius="15dp"
-            app:contentPadding="10dp"
-            android:elevation="10dp"
-            app:cardElevation="10dp">
+            android:layout_height="wrap_content">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                app:cardPreventCornerOverlap="false"
+                android:layout_marginTop="40dp"
+                app:cardUseCompatPadding="true"
+                android:clipToPadding="false"
+                app:cardCornerRadius="15dp"
+                app:contentPadding="10dp"
+                android:elevation="10dp"
+                app:cardElevation="10dp">
 
-    <!--            user profile pic-->
-                <ImageView
-                    android:id="@+id/userProfileImage"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:background="@color/Mirage"
-                    android:src="@drawable/ic_github_logo"
-                    app:layout_constraintEnd_toStartOf="@+id/endingGuideline"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    bind:userAvatar="@{UserModel.avatarUrl}" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="50dp"
+                    android:layout_height="wrap_content">
 
-                <ImageView
-                    android:id="@+id/viewProfile"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/ic_profile_click"
-                    app:layout_constraintEnd_toEndOf="@id/endingGuideline"
-                    app:layout_constraintTop_toTopOf="parent"/>
+        <!--            starting guideline-->
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/startingGuideline"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_begin="0dp" />
 
-    <!--            starting guideline-->
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/startingGuideline"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_begin="0dp" />
-
-    <!--            badges list-->
-                <LinearLayout
-                    android:id="@+id/linear_badges"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginTop="7dp"
-                    app:layout_constraintTop_toBottomOf="@id/userProfileImage"
-                    app:layout_constraintStart_toEndOf="@id/startingGuideline"
-                    app:layout_constraintEnd_toEndOf="@id/endingGuideline">
-
-    <!--                1st row-->
+        <!--            badges list-->
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:id="@+id/linear_badges"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintEnd_toEndOf="@id/endingGuideline"
+                        app:layout_constraintStart_toEndOf="@id/startingGuideline"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <!--                1st row-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:orientation="horizontal">
+
+                            <!--            public repos count-->
+                            <LinearLayout
+                                android:id="@+id/linear_public_repos_count"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="@drawable/dodger_blue_back"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:padding="5dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/public_repos_txt"
+                                    android:textColor="@color/white"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/publicReposCount"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{String.valueOf(UserModel.publicRepos)}"
+                                    android:textColor="@color/white"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+
+                            <!--            public gists count-->
+                            <LinearLayout
+                                android:id="@+id/linear_public_gists_count"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/raven_back"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:padding="5dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/public_gists_txt"
+                                    android:textColor="@color/white"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/publicGistsCount"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{String.valueOf(UserModel.publicGists)}"
+                                    android:textColor="@color/white"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <!--                2nd row-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="7dp"
+                            android:layout_marginEnd="10dp"
+                            android:orientation="horizontal">
+
+                            <!--            public followers count-->
+                            <LinearLayout
+                                android:id="@+id/linear_public_followers_count"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="@drawable/forest_green_back"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:padding="5dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/followers_txt"
+                                    android:textColor="@color/white"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/publicFollowersCount"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{String.valueOf(UserModel.followers)}"
+                                    android:textColor="@color/white"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+
+                            <!--            public following count-->
+                            <LinearLayout
+                                android:id="@+id/linear_public_following_count"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/dodger_blue_back"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:padding="5dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@id/linear_public_followers_count"
+                                app:layout_constraintTop_toBottomOf="@+id/linear_public_gists_count">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/following_txt"
+                                    android:textColor="@color/white"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/publicFollowingCount"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{String.valueOf(UserModel.following)}"
+                                    android:textColor="@color/white"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+        <!--            user info list-->
+                    <LinearLayout
+                        android:id="@+id/linear_user_info_list"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:layout_marginEnd="10dp"
-                        android:orientation="horizontal">
+                        android:layout_marginTop="7dp"
+                        android:padding="5dp"
+                        android:orientation="vertical"
+                        android:background="@drawable/bordered_back"
+                        app:layout_constraintStart_toEndOf="@id/startingGuideline"
+                        app:layout_constraintTop_toBottomOf="@id/linear_badges"
+                        app:layout_constraintEnd_toEndOf="@id/endingGuideline">
 
-    <!--            public repos count-->
+        <!--                username-->
                         <LinearLayout
-                            android:id="@+id/linear_public_repos_count"
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:background="@drawable/dodger_blue_back"
-                            android:orientation="horizontal"
-                            android:padding="5dp"
-                            android:gravity="center">
+                            android:orientation="horizontal">
 
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="@string/public_repos_txt"
+                                android:layout_weight="1"
                                 android:textSize="12sp"
-                                android:textColor="@color/white"
-                                android:textStyle="bold" />
+                                android:text="@string/username_txt"
+                                android:textColor="@color/black"/>
 
                             <TextView
-                                android:id="@+id/publicReposCount"
-                                android:layout_width="wrap_content"
+                                android:id="@+id/userName"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="@{String.valueOf(UserModel.publicRepos)}"
+                                android:layout_weight="1"
                                 android:textSize="12sp"
-                                android:textColor="@color/white"
-                                android:textStyle="bold" />
+                                android:text="@{UserModel.login}"
+                                android:textColor="@color/black"/>
 
                         </LinearLayout>
 
-    <!--            public gists count-->
+        <!--                divider-->
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="2dp"
+                            android:background="@color/colorPrimary" />
+
+        <!--                company-->
                         <LinearLayout
-                            android:id="@+id/linear_public_gists_count"
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/raven_back"
-                            android:orientation="horizontal"
-                            android:padding="5dp"
-                            android:gravity="center">
+                            android:orientation="horizontal">
 
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="@string/public_gists_txt"
-                                android:textColor="@color/white"
+                                android:layout_weight="1"
                                 android:textSize="12sp"
-                                android:textStyle="bold" />
+                                android:text="@string/company_txt"
+                                android:textColor="@color/black"/>
 
                             <TextView
-                                android:id="@+id/publicGistsCount"
-                                android:layout_width="wrap_content"
+                                android:id="@+id/companyName"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="@{String.valueOf(UserModel.publicGists)}"
+                                android:layout_weight="1"
                                 android:textSize="12sp"
-                                android:textColor="@color/white"
-                                android:textStyle="bold" />
+                                android:text="@{UserModel.company}"
+                                android:textColor="@color/black"/>
+
+                        </LinearLayout>
+
+        <!--                divider-->
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="2dp"
+                            android:background="@color/colorPrimary" />
+
+        <!--                website/blog-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:textSize="12sp"
+                                android:text="@string/website_blog_txt"
+                                android:textColor="@color/black"/>
+
+                            <TextView
+                                android:id="@+id/websiteBlogAddress"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:textSize="12sp"
+                                android:text="@{UserModel.blog}"
+                                android:textColor="@color/black"/>
+
+                            <View
+                                android:layout_width="1dp"
+                                android:layout_height="1dp"
+                                android:background="?android:attr/listDivider" />
+
+                        </LinearLayout>
+
+        <!--                divider-->
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="2dp"
+                            android:background="@color/colorPrimary" />
+
+        <!--                location-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:textSize="12sp"
+                                android:text="@string/location_txt"
+                                android:textColor="@color/black"/>
+
+                            <TextView
+                                android:id="@+id/userLocation"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:textSize="12sp"
+                                android:text="@{UserModel.location}"
+                                android:textColor="@color/black"/>
+
+                            <View
+                                android:layout_width="1dp"
+                                android:layout_height="1dp"
+                                android:background="?android:attr/listDivider" />
+
+                        </LinearLayout>
+
+        <!--                divider-->
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="2dp"
+                            android:background="@color/colorPrimary" />
+
+        <!--                member since-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:textSize="12sp"
+                                android:text="@string/member_since_txt"
+                                android:textColor="@color/black"/>
+
+                            <TextView
+                                android:id="@+id/memberSince"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:textSize="12sp"
+                                android:text="@{UserModel.createdAt}"
+                                android:textColor="@color/black"/>
 
                         </LinearLayout>
 
                     </LinearLayout>
 
-    <!--                2nd row-->
-                    <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginTop="7dp"
-                    android:orientation="horizontal">
-
-    <!--            public followers count-->
-                    <LinearLayout
-                        android:id="@+id/linear_public_followers_count"
-                        android:layout_width="0dp"
+        <!--            progress bar-->
+                    <com.github.ybq.android.spinkit.SpinKitView
+                        android:id="@+id/spin_kit"
+                        style="@style/SpinKitView.Large.DoubleBounce"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@drawable/forest_green_back"
-                        android:orientation="horizontal"
-                        android:padding="5dp"
-                        android:gravity="center">
+                        android:layout_gravity="center"
+                        app:SpinKit_Color="@color/Mirage"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/followers_txt"
-                            android:textColor="@color/white"
-                            android:textSize="12sp"
-                            android:textStyle="bold" />
+        <!--            ending guideline-->
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/endingGuideline"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_end="0dp" />
 
-                        <TextView
-                            android:id="@+id/publicFollowersCount"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@{String.valueOf(UserModel.followers)}"
-                            android:textSize="12sp"
-                            android:textColor="@color/white"
-                            android:textStyle="bold" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-    <!--            public following count-->
-                    <LinearLayout
-                        android:id="@+id/linear_public_following_count"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginStart="10dp"
-                        android:background="@drawable/dodger_blue_back"
-                        android:orientation="horizontal"
-                        android:padding="5dp"
-                        android:gravity="center"
-                        app:layout_constraintStart_toEndOf="@id/linear_public_followers_count"
-                        app:layout_constraintTop_toBottomOf="@+id/linear_public_gists_count"
-                        app:layout_constraintEnd_toEndOf="parent">
+        </FrameLayout>
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/following_txt"
-                            android:textColor="@color/white"
-                            android:textSize="12sp"
-                            android:textStyle="bold" />
+<!--            user profile pic-->
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/userProfileImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/ic_github_logo"
+            android:layout_gravity="center_horizontal"
+            app:civ_border_width="2dp"
+            bind:userAvatar="@{UserModel.avatarUrl}"
+            app:civ_border_color="#FF000000"/>
 
-                        <TextView
-                            android:id="@+id/publicFollowingCount"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@{String.valueOf(UserModel.following)}"
-                            android:textSize="12sp"
-                            android:textColor="@color/white"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                </LinearLayout>
-
-    <!--            user info list-->
-                <LinearLayout
-                    android:id="@+id/linear_user_info_list"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginTop="7dp"
-                    android:padding="5dp"
-                    android:orientation="vertical"
-                    android:background="@drawable/bordered_back"
-                    app:layout_constraintStart_toEndOf="@id/startingGuideline"
-                    app:layout_constraintTop_toBottomOf="@id/linear_badges"
-                    app:layout_constraintEnd_toEndOf="@id/endingGuideline">
-
-    <!--                username-->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:textSize="12sp"
-                            android:text="@string/username_txt"
-                            android:textColor="@color/black"/>
-
-                        <TextView
-                            android:id="@+id/userName"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:textSize="12sp"
-                            android:text="@{UserModel.login}"
-                            android:textColor="@color/black"/>
-
-                    </LinearLayout>
-
-    <!--                divider-->
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="2dp"
-                        android:background="@color/colorPrimary" />
-
-    <!--                company-->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:textSize="12sp"
-                            android:text="@string/company_txt"
-                            android:textColor="@color/black"/>
-
-                        <TextView
-                            android:id="@+id/companyName"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:textSize="12sp"
-                            android:text="@{UserModel.company}"
-                            android:textColor="@color/black"/>
-
-                    </LinearLayout>
-
-    <!--                divider-->
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="2dp"
-                        android:background="@color/colorPrimary" />
-
-    <!--                website/blog-->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:textSize="12sp"
-                            android:text="@string/website_blog_txt"
-                            android:textColor="@color/black"/>
-
-                        <TextView
-                            android:id="@+id/websiteBlogAddress"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:textSize="12sp"
-                            android:text="@{UserModel.blog}"
-                            android:textColor="@color/black"/>
-
-                        <View
-                            android:layout_width="1dp"
-                            android:layout_height="1dp"
-                            android:background="?android:attr/listDivider" />
-
-                    </LinearLayout>
-
-    <!--                divider-->
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="2dp"
-                        android:background="@color/colorPrimary" />
-
-    <!--                location-->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:textSize="12sp"
-                            android:text="@string/location_txt"
-                            android:textColor="@color/black"/>
-
-                        <TextView
-                            android:id="@+id/userLocation"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:textSize="12sp"
-                            android:text="@{UserModel.location}"
-                            android:textColor="@color/black"/>
-
-                        <View
-                            android:layout_width="1dp"
-                            android:layout_height="1dp"
-                            android:background="?android:attr/listDivider" />
-
-                    </LinearLayout>
-
-    <!--                divider-->
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="2dp"
-                        android:background="@color/colorPrimary" />
-
-    <!--                member since-->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:textSize="12sp"
-                            android:text="@string/member_since_txt"
-                            android:textColor="@color/black"/>
-
-                        <TextView
-                            android:id="@+id/memberSince"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:textSize="12sp"
-                            android:text="@{UserModel.createdAt}"
-                            android:textColor="@color/black"/>
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-    <!--            progress bar-->
-                <com.github.ybq.android.spinkit.SpinKitView
-                    android:id="@+id/spin_kit"
-                    style="@style/SpinKitView.Large.DoubleBounce"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    app:SpinKit_Color="@color/Mirage"
-                    android:visibility="gone"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-    <!--            ending guideline-->
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/endingGuideline"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_end="0dp" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
-    </LinearLayout>
+    </FrameLayout>
 
 </layout>

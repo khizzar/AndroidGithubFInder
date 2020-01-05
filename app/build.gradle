@@ -67,4 +67,7 @@ dependencies {
 //    Tooltip
     implementation 'com.github.florent37:viewtooltip:1.2.0'
 
+//    rounded image view
+    implementation 'de.hdodenhof:circleimageview:3.0.1'
+
 }
